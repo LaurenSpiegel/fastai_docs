@@ -81,7 +81,6 @@ public class Mat {
     }
 }
 
-
 public func imread(_ filename: String, _ flags: IMReadMode = IMReadMode.IMREAD_COLOR) -> Mat {
     return Mat(Image_IMRead(strdup(filename), flags.rawValue)!)
 }
@@ -167,4 +166,6 @@ public func transpose(_ src: Mat, _ dst: Mat? = nil) -> Mat {
 }
 
 public func cvVersion() -> String { return String(cString: COpenCV.openCVVersion()!) }
+public func SetNumThreads(_ nthreads:Int) { COpenCV.SetNumThreads(numericCast(nthreads)) }
+public func GetNumThreads()->Int { return numericCast(COpenCV.GetNumThreads()) }
 
